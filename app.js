@@ -1,11 +1,17 @@
 var http = require("http");
+var path = require("path");
+var express = require("express");
 
-function requestHandler(req, res) {
+// Creat the express app
+var app = express();
 
-    res.end("Welcome to WordPress for everyone");
+app.set("views", path.resolve(__dirname, "views"));
+app.set("view engine", "ejs");
 
-}
+app.get("/", function(req, res){
+    res.render("index");
+});
 
-var server = http.createServer(requestHandler);
-
-server.listen(3000);
+app.listen(3000, function(){
+    console.log("App is running;");
+});
