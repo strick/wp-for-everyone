@@ -4,5 +4,12 @@
     "express": "^4.17.1",
     "http": "^0.0.1-security",
     "path": "^0.12.7"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "start:dev": "nodemon --legacy-watch app.js"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
   }
 }
