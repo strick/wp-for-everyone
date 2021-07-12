@@ -24,13 +24,9 @@
           "description": "The SKU of App Service Plan."
         }
       },
-        "webAppName": {
-            "defaultValue": "testingthisoutstrickland2222",
-            "type": "String"
-        },
         "serverfarms_hackdaysummer2021_externalid": {
             "defaultValue": "/subscriptions/d8932d22-4a0a-4ca8-a595-72a6895a4e47/resourceGroups/hackday-summer-2021/providers/Microsoft.Web/serverfarms/hackdaysummer2021",
-            "type": "String"
+            "type": "string"
         },
       "linuxFxVersion": {
         "type": "string",
