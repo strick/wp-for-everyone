@@ -1,4 +1,8 @@
 <%- include("./header.ejs"); %>
 <h1>Welcome to WordPress for Everyone!</h1>
-<a href="/create">Create Site</a>
+<form method="POST" action="/create">
+    <label>Site Name:</label>
+    <input type="text" name="sitename" />
+    <input type="submit" value="Create" />
+</form>
 <%- include("./footer.ejs"); %>

@@ -1,0 +1,93 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "webAppName": {
+        "type": "string",
+        "defaultValue": "[concat('webApp-', uniqueString(resourceGroup().id))]",
+        "minLength": 2,
+        "metadata": {
+          "description": "Web app name."
+        }
+      },
+      "location": {
+        "type": "string",
+        "defaultValue": "[resourceGroup().location]",
+        "metadata": {
+          "description": "Location for all resources."
+        }
+      },
+      "sku": {
+        "type": "string",
+        "defaultValue": "F1",
+        "metadata": {
+          "description": "The SKU of App Service Plan."
+        }
+      },
+        "webAppName": {
+            "defaultValue": "testingthisoutstrickland2222",
+            "type": "String"
+        },
+        "serverfarms_hackdaysummer2021_externalid": {
+            "defaultValue": "/subscriptions/d8932d22-4a0a-4ca8-a595-72a6895a4e47/resourceGroups/hackday-summer-2021/providers/Microsoft.Web/serverfarms/hackdaysummer2021",
+            "type": "String"
+        },
+      "linuxFxVersion": {
+        "type": "string",
+        "defaultValue": "DOCKER|wordpress",
+        "metadata": {
+          "description": "The Runtime stack of current web app"
+        }
+      },
+      "repoUrl": {
+        "type": "string",
+        "defaultValue": " ",
+        "metadata": {
+          "description": "Optional Git Repo URL"
+        }
+      }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Web/sites",
+            "apiVersion": "2018-11-01",
+            "name": "[parameters('webAppName')]",
+            "location": "East US",
+            "kind": "app,linux,container",
+            "properties": {
+                "enabled": true,
+                "hostNameSslStates": [
+                    {
+                        "name": "[concat(parameters('webAppName'), '.azurewebsites.net')]",
+                        "sslState": "Disabled",
+                        "hostType": "Standard"
+                    },
+                    {
+                        "name": "[concat(parameters('webAppName'), '.scm.azurewebsites.net')]",
+                        "sslState": "Disabled",
+                        "hostType": "Repository"
+                    }
+                ],
+                "serverFarmId": "[parameters('serverfarms_hackdaysummer2021_externalid')]",
+                "reserved": true,
+                "isXenon": false,
+                "hyperV": false,
+                "siteConfig": {
+                    "numberOfWorkers": 1,
+                    "linuxFxVersion": "DOCKER|wordpress",
+                    "alwaysOn": false,
+                    "http20Enabled": false
+                },
+                "scmSiteAlsoStopped": false,
+                "clientAffinityEnabled": false,
+                "clientCertEnabled": false,
+                "hostNamesDisabled": false,
+                "containerSize": 0,
+                "dailyMemoryTimeQuota": 0,
+                "httpsOnly": false,
+                "redundancyMode": "None"
+            }
+        }
+    ]
+  }
