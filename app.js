@@ -12,6 +12,14 @@ app.get("/", function(req, res){
     res.render("index");
 });
 
+app.get("/create", function(req, res){
+
+    // Run terraform scripts
+
+
+    res.render("create");
+});
+
 app.listen(3000, function(){
     console.log("App is running;");
 });
