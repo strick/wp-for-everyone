@@ -1,8 +1,36 @@
 <%- include("./header.ejs"); %>
-<h1>Welcome to WordPress for Everyone!</h1>
-<form method="POST" action="/create">
-    <label>Site Name:</label>
-    <input type="text" name="sitename" />
-    <input type="submit" value="Create" />
+<div class="row">
+    <div class="col-md-12">
+<h1>Welcome to UCFs WordPress for Everyone!</h1>
+
+<form onsubmit="document.getElementById('submitbutton').disabled = 'disabled';  document.getElementById('submitbutton').value = 'Site Generating...';" action="/create" method="post">    <div class="card mb-3">
+    <div class="card-header">Build Your WordPress Site</div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-4">
+                <p class="lead">
+                    Become a proud UCF Wordpress site owner in one simple step!
+                </p>
+                <p>
+                    <b>Site Name</b><br>
+                    Your site name will be generated as https://<strong>sitename</strong>.azuresites.com.
+                </p>
+            </div>   
+            <div class="col-sm-8">
+                <div class="form-group">
+                    <label for="sitename">Sitename</label>
+                    <input class="form-control" data-val="true" data-val-required="Sitename is required" id="sitename" name="sitename" type="text" value="" />
+                    <span class="field-validation-valid" data-valmsg-for="sitename" data-valmsg-replace="true"></span>
+                </div>                
+            </div>       
+        </div>
+    </div>
+</div>
+<div class="jumbotron text-center">
+    <input id="submitbutton" type="submit" value="Create Site" class="btn btn-lg btn-primary">
+</div>
 </form>
+
+</div>
+</div>
 <%- include("./footer.ejs"); %>
