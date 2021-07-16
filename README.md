@@ -1,5 +1,4 @@
-# wp-for-everyone
-
+# Wordpress for Everyone
 # How to create your own instance
 ## Setup Azure
 - Create an Azure Resource Group in your subscription
