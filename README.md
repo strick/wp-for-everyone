@@ -9,6 +9,7 @@
 ## Create service account
 - az login
 - az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/your-subscription"
+  - Remember this information, it's needed later.
 
 ## Setup site
 - Download source code
@@ -22,6 +23,7 @@
   - azurem_app_service.asp "linux_fx_version"
 - terraform init  (you may need to delete the backend.tf if you don't have a storage location)
 - terraform apply -var="client_id=000000000000000000" -var="client_secret=000000000000000000" -var="subscription_id=000000000000000000" -var="tenant_id=000000000000000000"
+  - use the information you got in the service account creation step here
 
 That's it.
 - 
