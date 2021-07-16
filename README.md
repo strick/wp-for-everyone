@@ -29,6 +29,14 @@
 - terraform apply -var="client_id=000000000000000000" -var="client_secret=000000000000000000" -var="subscription_id=000000000000000000" -var="tenant_id=000000000000000000"
   - use the information you got in the service account creation step here
 
+- NOTE:  During the terraform build process, you will be asked to verify your Azure login.  You must do this otherwise the build process will not continue and the application will not be able to build resources:
+
+```null_resource.docker_build (local-exec): #17 [12/12] RUN /azure-cli/bin/python -m azure.cli login
+null_resource.docker_build (local-exec): #17 sha256:3027a084ed488d73d3fc32e787b314d4aa07d2a51054c62f819f48338d42d896
+null_resource.docker_build (local-exec): #17 2.702 WARNING: Not able to launch a browser to log you in, falling back to device code...
+null_resource.docker_build (local-exec): #17 3.332 WARNING: To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code XXXXXXXXX to authenticate.
+```
+
 That's it, you'll then have a site named app_name.azurewebsites.net that can auto generate wordpress sites!
 
 ## Terraform located in /scripts
