@@ -1,6 +1,4 @@
 # wp-for-everyone
-## Terraform located in /scripts
-## Wordpress for Everyone located in /src
 
 # How to create your own instance
 ## Setup Azure
@@ -23,9 +21,11 @@
   - docker_push "command"
   - azurem_app_service.asp "linux_fx_version"
 - Update backend.tf with your storage account information
-- terraform init  (you may need to delete the backend.tf if you don't have a storage location)
+- terraform init  
 - terraform apply -var="client_id=000000000000000000" -var="client_secret=000000000000000000" -var="subscription_id=000000000000000000" -var="tenant_id=000000000000000000"
   - use the information you got in the service account creation step here
 
-That's it.
-- 
+That's it, you'll then have a site named app_name.azurewebsites.net that can auto generate wordpress sites!
+
+## Terraform located in /scripts
+## Wordpress for Everyone located in /src
