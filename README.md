@@ -1,6 +1,12 @@
 # Wordpress for Everyone
 # How to create your own instance
 ***WARNING:  This will incur a $0.17 charge per day***
+
+## Preqs
+- Need an Azure Account
+- Docker installed on your system
+- az cli installed on your system
+
 ## Setup Azure
 - Create an Azure Resource Group in your subscription
 - Create a blob storage in its own resource group and add a container to it.    This is used for terraform state.
