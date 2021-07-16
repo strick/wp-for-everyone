@@ -28,10 +28,15 @@ app.post("/create", function(req, res){
     }
 
     else {
-        var cmd = `cd scripts  
-        az deployment group create --resource-group hackday-summer-2021 --parameters webAppName="${req.body.sitename}" --template-file webapp.json 
-        `;
+
         var exec =  require('child_process').exec;
+
+        console.log(path.resolve(__dirname, "scripts"));
+
+        var cmd = `pwd
+        cd ${path.resolve(__dirname, "scripts")}
+        /azure-cli/bin/python -m azure.cli webapp create --resource-group hackday-summer-2021 --plan hackdaysummer2021 --name ${req.body.sitename} --multicontainer-config-type compose --multicontainer-config-file docker-compose.yml
+        `;
 
         exec(cmd, function(err, stdout, stderr) {
 
@@ -48,6 +53,6 @@ app.post("/create", function(req, res){
     }
 });
 
-app.listen(3000, function(){
+app.listen(process.env.PORT || 80, function(){
     console.log("App is running;");
 });

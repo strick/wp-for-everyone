@@ -11,7 +11,7 @@ variable admin_username {
 }
 
 variable app_name {
-
+    default = "wordpress-for-everyone"
 }
 
 variable client_id {
