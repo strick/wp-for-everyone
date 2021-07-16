@@ -1,4 +1,5 @@
 resource "azurerm_app_service_plan" "asp" {
+
  name                   = "hackdaysummer2021"
  location               = var.location
  resource_group_name    = var.resource_group_name
@@ -11,7 +12,22 @@ resource "azurerm_app_service_plan" "asp" {
  }
 }
 
+resource "null_resource" "docker_push" {
+
+  depends_on = [ azurerm_container_registry.container_registry ]
+
+    triggers = {
+        always_run = timestamp()
+    }
+
+    provisioner "local-exec" {
+        command = "docker push hackdaysummer2021.azurecr.io/hackdaysummer2021:latest"
+    }
+}
+
 resource "azurerm_app_service" "asp" {
+
+  depends_on = [ null_resource.docker_push ]
 
   name                = var.app_name
   location            = var.location
