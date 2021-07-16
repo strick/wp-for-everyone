@@ -38,6 +38,3 @@ null_resource.docker_build (local-exec): #17 3.332 WARNING: To sign in, use a we
 ```
 
 That's it, you'll then have a site named app_name.azurewebsites.net that can auto generate wordpress sites!
-
-## Terraform located in /scripts
-## Wordpress for Everyone located in /src
