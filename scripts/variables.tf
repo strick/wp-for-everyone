@@ -14,6 +14,14 @@ variable app_name {
     default = "wordpress-for-everyone"
 }
 
+variable app_service_plan_name {
+    default = "hackdaysummer2021"
+}
+
+variable container_registry_name {
+    default = "hackdaysummer2021"
+}
+
 variable client_id {
     sensitive = true
 }

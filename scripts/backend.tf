@@ -3,8 +3,8 @@
 
 terraform {
     backend "azurerm" {
-        resource_group_name  = "hackday-summer-2021"
-        storage_account_name = "hackdaysummer2021tf2"
+        resource_group_name  = "hackday-tf"
+        storage_account_name = "hackdaytf"
         container_name       = "tf-state"
         key                  = "terraform.tfstate"
     }

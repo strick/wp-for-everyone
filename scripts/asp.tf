@@ -1,6 +1,8 @@
 resource "azurerm_app_service_plan" "asp" {
 
- name                   = "hackdaysummer2021"
+  depends_on = [ azurerm_resource_group.rg ]
+
+ name                   = var.app_service_plan_name
  location               = var.location
  resource_group_name    = var.resource_group_name
  kind                   = "Linux"
@@ -21,7 +23,7 @@ resource "null_resource" "docker_login" {
     }
 
     provisioner "local-exec" {
-        command = "az acr login -n hackdaysummer2021.azurecr.io"
+        command = "az acr login -n ${var.container_registry_name}"
     }
 }
 
@@ -34,7 +36,7 @@ resource "null_resource" "docker_push" {
     }
 
     provisioner "local-exec" {
-        command = "docker push hackdaysummer2021.azurecr.io/hackdaysummer2021:latest"
+        command = "docker push ${azurerm_container_registry.container_registry.login_server}/hackdaysummer2021:latest"
     }
 }
 
@@ -50,7 +52,7 @@ resource "azurerm_app_service" "asp" {
   site_config {
     app_command_line = ""
     use_32_bit_worker_process = "true"
-    linux_fx_version = "DOCKER|hackdaysummer2021.azurecr.io/hackdaysummer2021:latest"
+    linux_fx_version = "DOCKER|${azurerm_container_registry.container_registry.login_server}/hackdaysummer2021:latest"
   }
 
   app_settings = {

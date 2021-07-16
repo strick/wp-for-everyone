@@ -1,6 +1,8 @@
 resource "azurerm_container_registry" "container_registry" {
+
+  depends_on = [azurerm_resource_group.rg]
   
-    name = "hackdaysummer2021"
+    name = var.container_registry_name
     resource_group_name = var.resource_group_name
 
     location = var.location
