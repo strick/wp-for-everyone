@@ -1,16 +1,16 @@
 # Wordpress for Everyone
-# Disclaimer: Use at your own risk
+## Disclaimer: Use at your own risk
 - Unofficial, unauthorized, personal project. Use at your own risk. Any feedback/improvements are welcome
 - Use of this code is at your own risk.  This code base is provided on an "as is" basis.   There are some costs and potential security flaws associated to setting up this app for your own use.  By using this code, you assume all risks associated with it and the author shall not be liable.
 - The tool is built on the free teir App Service Plan, but there may be additional costs associated with storage accounts and the azure container registry.   I've personally only experienced the $0.17 per day, but this may differ for you.   By using this, you take upon your own costs and security risks
-# How to create your own instance
+## How to create your own instance
 
-## Preqs
+### Preqs
 - Need an Azure Account
 - Docker installed on your system
 - az cli installed on your system
 
-## Setup Azure
+### Setup Azure
 - Create an Azure Resource Group in your subscription
 - Create a blob storage in its own resource group and add a container to it.    This is used for terraform state.
   - Create a new resource group for it (example below)
@@ -18,12 +18,12 @@
     - Blob name: hackdaytf
     - Container name: tf-state  (private container)
 
-## Create service account
+### Create service account
 - az login
 - az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/your-subscription"
   - Remember this information, it's needed later.
 
-## Deploy your instance
+### Deploy your instance
 - Download source code
 - cd /scripts
 - Update variables.tf with your information
