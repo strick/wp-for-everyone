@@ -3,7 +3,14 @@
 ## Wordpress for Everyone located in /src
 
 # How to create your own instance
+## Setup Azure
 - Create an Azure Resource Group in your subscription
+
+## Create service account
+- az login
+- az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/d8932d22-4a0a-4ca8-a595-72a6895a4e47"
+
+## Setup site
 - Download source code
 - cd /scripts
 - Update variables.tf with your information (app_name and resource_group_name)
