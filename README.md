@@ -14,7 +14,8 @@
 - Download source code
 - cd /scripts
 - Update variables.tf with your information (app_name and resource_group_name)
-- Update container-registry.tf "name" to your own  ***WARNING:  This will incur a $0.17 charge per day***
+- Update container-registry.tf "name" to your own  
+  - ***WARNING:  This will incur a $0.17 charge per day***
 - Update asp.tf with your information   (all of this could of been done in variables.tf...)
   - asp "name"
   - docker_login "command"
