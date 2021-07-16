@@ -12,9 +12,22 @@ resource "azurerm_app_service_plan" "asp" {
  }
 }
 
-resource "null_resource" "docker_push" {
+resource "null_resource" "docker_login" {
 
   depends_on = [ azurerm_container_registry.container_registry ]
+
+    triggers = {
+        always_run = timestamp()
+    }
+
+    provisioner "local-exec" {
+        command = "az acr login -n hackdaysummer2021.azurecr.io"
+    }
+}
+
+resource "null_resource" "docker_push" {
+
+  depends_on = [ null_resource.docker_login ]
 
     triggers = {
         always_run = timestamp()
