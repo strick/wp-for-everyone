@@ -1,6 +1,6 @@
 # Wordpress for Everyone
 # How to create your own instance
-***WARNING about cost***
+***Disclaimer about cost***
 - The tool is built on the free teir App Service Plan, but there may be additional costs associated with storage accounts and the azure container registry.   I've personally only experienced the $0.17 per day, but this may differ for you.   Use at your own risk.
 
 ## Preqs
