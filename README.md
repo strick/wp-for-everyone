@@ -8,7 +8,7 @@
 
 ## Create service account
 - az login
-- az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/<your-subscription>"
+- az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/your-subscription"
 
 ## Setup site
 - Download source code
