@@ -5,6 +5,7 @@
 # How to create your own instance
 ## Setup Azure
 - Create an Azure Resource Group in your subscription
+- Create a blob storage in its own resource group and add a container to it.    This is used for terraform state.
 
 ## Create service account
 - az login
@@ -21,6 +22,7 @@
   - docker_login "command"
   - docker_push "command"
   - azurem_app_service.asp "linux_fx_version"
+- Update backend.tf with your storage account information
 - terraform init  (you may need to delete the backend.tf if you don't have a storage location)
 - terraform apply -var="client_id=000000000000000000" -var="client_secret=000000000000000000" -var="subscription_id=000000000000000000" -var="tenant_id=000000000000000000"
   - use the information you got in the service account creation step here
