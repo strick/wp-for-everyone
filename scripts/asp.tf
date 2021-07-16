@@ -27,7 +27,7 @@ resource "null_resource" "docker_login" {
     }
 }
 
-resource "null_resource" "docker_push" {
+resource "null_resource" "docker_build" {
 
   depends_on = [ null_resource.docker_login ]
 
@@ -36,7 +36,20 @@ resource "null_resource" "docker_push" {
     }
 
     provisioner "local-exec" {
-        command = "docker push ${azurerm_container_registry.container_registry.login_server}/hackdaysummer2021:latest"
+        command = "docker build -t ${azurerm_container_registry.container_registry.login_server}/${var.container_registry_name}:latest -f ../Dockerfile ../"
+    }
+}
+
+resource "null_resource" "docker_push" {
+
+  depends_on = [ null_resource.docker_build ]
+
+    triggers = {
+        always_run = timestamp()
+    }
+
+    provisioner "local-exec" {
+        command = "docker push ${azurerm_container_registry.container_registry.login_server}/${var.container_registry_name}:latest"
     }
 }
 
@@ -52,7 +65,7 @@ resource "azurerm_app_service" "asp" {
   site_config {
     app_command_line = ""
     use_32_bit_worker_process = "true"
-    linux_fx_version = "DOCKER|${azurerm_container_registry.container_registry.login_server}/hackdaysummer2021:latest"
+    linux_fx_version = "DOCKER|${azurerm_container_registry.container_registry.login_server}/${var.container_registry_name}:latest"
   }
 
   app_settings = {
