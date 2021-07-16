@@ -10,7 +10,7 @@
 - az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/your-subscription"
   - Remember this information, it's needed later.
 
-## Setup site
+## Deploy your instance
 - Download source code
 - cd /scripts
 - Update variables.tf with your information (app_name and resource_group_name)
