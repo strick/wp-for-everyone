@@ -41,3 +41,6 @@ null_resource.docker_build (local-exec): #17 3.332 WARNING: To sign in, use a we
 ```
 
 That's it, you'll then have a site named app_name.azurewebsites.net that can auto generate wordpress sites!
+
+![image](https://user-images.githubusercontent.com/1486739/125998795-82aa1f79-87a9-4cdd-a7f7-49a7942cc1e8.png)
+
